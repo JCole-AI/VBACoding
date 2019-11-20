@@ -1,0 +1,30 @@
+Sub Email_From_Excel_Basic()
+
+Dim emailApplication As Object
+Dim emailItem As Object
+
+Set emailApplication = CreateObject("Outlook.Application")
+Set emailItem = emailApplication.CreateItem(0)
+' Now we build the email
+
+emailItem.to = "jcole1786@gmail.com;sabio1989@gmail.com"
+'this is the email subject
+
+emailItem.Subject = "" & Range("M2").Value
+
+'this is the email subject(reminder vba line puts in a new line or you can change this to emailItem.HTMLBody for HTML format)
+
+emailItem.Body = "A" & Space(1) & Range("M2").Value & Space(1) & "requested by" & Space(1) & Range("M3").Value & Space(1) & " is pending" & vbNewLine & vbNewLine & "Details:" & vbNewLine & Range("M4").Value
+                
+
+
+'send email without preview
+'emailItem.Send
+
+emailItem.Display
+
+
+
+
+
+End Sub
